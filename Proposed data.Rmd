@@ -1,0 +1,58 @@
+---
+title: "Proposed data"
+author: "Travis"
+date: "2/5/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Which data should we use?
+I propose that we use 3 types of data. Easy textual data, simulated non-text data, and difficult real data. The easy data will give us a baseline for our work, the simulated data will allow us to make statements about the different models ability to perform in certain, controlled, scenarios. The real world data will be messy and difficult, and will put strain on our methods, thus revealing which can withstand the rigors of the real world. 
+
+
+### Easy data
+For the easy data, I propose we use the previous amazon review data. It is easy to implement, and only has 4 classes. This will not meet our > 20 class requirememnt, but it will allow us to weed out any mistakes/bad methods more easily. 
+
+To load the data into your enviorment, perform the following:
+
+```{r}
+test_amazon_data <- read.csv("test_amazon_data.csv", header=FALSE)
+train_amazon_data <- read.csv("train_amazon_data.csv", header=FALSE)
+
+```
+
+
+### Simulated Data
+
+By doing a mixture of some sort of distributions, we can simulate data that is either difficult or easy to seperate and have as many classes as we wish. The one downside is that we are forced to both code, and decide on the distributions of such a peice of data. Luckily, we are handy R coders ;) so it shouldn't be that hard. My task for this next weekend will be to make this simulator. It will create $n$ $d$ dimensional Mixed GHD models (where $n$ is our desired classes and $d$ is our dimensionality, defaulted to 50) automatically with a parameter for well seperated or not well seperated, or random. This data should prove as difficult or as easy as we wish.
+
+
+The function (not completed yet) will look something like this:
+
+```{r}
+Simulated_GHDs = function(GHD_parameters_range, number_of_classes, dimension = 50, separation = "Random"){
+  
+}
+
+```
+
+
+
+### Real Data
+
+For the real data (the ultimate test) I will use my reddit API skills to pull down the titles from 30 well known, randomly selected, subreddits. I will do a little README.txt to describe what my methods and requirements are. This data should be the most helpful, as it is real, potentially difficult, and has a good amount of inturpretability potential. This next week for me will also involve scraping this data and getting it into a nice convenient csv file. 
+
+
+
+### Data pipeline:
+
+This last weekend, I have been working on creating a GLOVE pipeline in R in order to convert our data into its best state. I will be using it to create a file for converting our data into their $n$x$d$ vector lengths. I will do so by combining our own text, with that of the glove pretrained models. It will be implemented into the package 'LilRhino'. 
+
+
+
+
+
+
+
